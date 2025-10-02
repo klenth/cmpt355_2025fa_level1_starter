@@ -15,6 +15,7 @@
 - This level introduces an intermediate representation in order to support typechecking and declarations. The semantic analysis phase produces an IR from an AST.
 - A symbol table is employed to resolve variables and functions.
 - "Global" code (outside all functions) is dumped into `main` method. Global variables are implemented as static fields; local variables are JVM locals.
+- Functions are implemented as JVM `static` methods. (So the generated JVM assembly will have one `.method` corresponding to `public static void main(String[])`, plus one `.method` for every function defined in the code.)
 - The only scopes are global (functions and variables) and local (variables). There is no further nesting of scopes. Local variables having the same names as globals shadow the globals.
 - Since functions are now in the language, `sqrt` does not any longer need to be a special syntactic form. However, the semantic analysis phase will need to handle it specially.
 - `print` and `input` are still special syntactic forms, however:
